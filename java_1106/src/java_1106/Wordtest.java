@@ -53,78 +53,91 @@ public class Wordtest {
       
    }
    public static void ObjectiveCorrect() {
-         
-      int w=0;
-         for(int j=0;j<5;j++) {
-            int num = r.nextInt(words.size());
-            Word[] testWord = new Word[5];
-            testWord[0] = words.get(num);
-            Word correctWord = words.get(num);
-            boolean[] useWord = new boolean[words.size()];
-            useWord[num]=true;
-            for (int i=1;i<testWord.length;i++) {
-               int rand = r.nextInt(words.size());
-               if(useWord[rand]) {
-                  i--;
-                  continue;
-               }else {
-                  testWord[i]=words.get(rand);
-                  useWord[rand]=true;
-               }
-            }
-            for(int i=0;i<100;i++) {
-               Word tempWord;
-               int[] mixNum = {r.nextInt(4),r.nextInt(4)};
 
-               if(mixNum[0]==mixNum[1]) {
-                  i--;
-                  continue;
-               }else {
-                  tempWord=testWord[mixNum[0]];
-                  testWord[mixNum[0]]=testWord[mixNum[1]];
-                  testWord[mixNum[1]]=tempWord;
-               }
-            }
+	      int w=0;
+	      boolean[] delWord = new boolean[words.size()];
+	      for(int j=0;j<5;j++) {
+	         int num;
+	         int repeat=0;
+	         do {
+	            if(repeat==words.size()) {
+	               System.out.println("단어장의 모든 단어가 사용되었습니다.");
+	               return;
+	            }
+	            num = r.nextInt(words.size());
+	            repeat++;
+	         }while(delWord[num]);
+	         delWord[num]=true;
+	         
+	         Word[] testWord = new Word[5];
+	         testWord[0] = words.get(num);
+	         Word correctWord = words.get(num);
+	         boolean[] useWord = new boolean[words.size()];
+	         useWord[num]=true;
+	         for (int i=1;i<testWord.length;i++) {
+	            int rand = r.nextInt(words.size());
+	            if(useWord[rand]) {
+	               i--;
+	               continue;
+	            }else {
+	               testWord[i]=words.get(rand);
+	               useWord[rand]=true;
+	            }
+	         }
+	         for(int i=0;i<100;i++) {
+	            Word tempWord;
+	            int[] mixNum = {r.nextInt(4),r.nextInt(4)};
 
-            System.out.println();
-            System.out.println("*객관식 문제*");
-            System.out.println((j+1)+"번 :["+correctWord.getWord_e()+"]");
-            for(int i=0;i<testWord.length;i++) {
-               System.out.print("- "+(i+1)+"번 : ");
-               for(int k=0;k<testWord[i].getMean().length;k++) {
-                  System.out.print(testWord[i].checkMean(k)+" ");
-               }
-               System.out.println();
-            }
-            System.out.print("-단어뜻 : ");
-            int userNum;
-            while(true) {
-               userNum = sc.nextInt();
-               if(userNum<1||userNum>5) {
-                  System.out.println("1~5번까지의 보기중에서 선택해주세요.");
-                  continue;
-               }else {
-                  break;
-               }
-            }
-            userNum-=1;
-            boolean check=true;
-            for(int i=0;i<testWord[userNum].getMean().length&&i<correctWord.getMean().length;i++) {
-               if(testWord[userNum].checkMean(i).equals(correctWord.checkMean(i))) {
-                  System.out.println("정답입니다.");
-                  w+=1;
-                  check=false;
-                  break;
-               }
-            }
-            if(check) {
-               System.out.println("오답입니다.");
-            }
+	            if(mixNum[0]==mixNum[1]) {
+	               i--;
+	               continue;
+	            }else {
+	               tempWord=testWord[mixNum[0]];
+	               testWord[mixNum[0]]=testWord[mixNum[1]];
+	               testWord[mixNum[1]]=tempWord;
+	            }
+	         }
 
-         }
-         System.out.println("맞은갯수 : "+w+"/5");
-         
-      }
+	         System.out.println();
+	         System.out.println("*객관식 문제*");
+	         System.out.println((j+1)+"번 :["+correctWord.getWord_e()+"]");
+	         for(int i=0;i<testWord.length;i++) {
+	            System.out.print("- "+(i+1)+"번 : ");
+	            for(int k=0;k<testWord[i].getMean().length;k++) {
+	               System.out.print(testWord[i].checkMean(k)+" ");
+	            }
+	            System.out.println();
+	         }
+	         System.out.print("-단어뜻 : ");
+	         int userNum;
+	         while(true) {
+	            userNum = sc.nextInt();
+	            if(userNum<1||userNum>5) {
+	               System.out.println("1~5번까지의 보기중에서 선택해주세요.");
+	               continue;
+	            }else {
+	               break;
+	            }
+	         }
+	         userNum-=1;
+	         boolean check=true;
+	         for(int i=0;i<testWord[userNum].getMean().length&&i<correctWord.getMean().length;i++) {
+	            if(testWord[userNum].checkMean(i).equals(correctWord.checkMean(i))) {
+	               System.out.println("정답입니다.");
+	               w+=1;
+	               check=false;
+	               break;
+	            }
+	         }
+	         if(check) {
+	            System.out.println("오답입니다.");
+	         }
+
+	      }
+	      System.out.println("맞은갯수 : "+w+"/5");
+
+	   }
+
    public static void Subjective() {
 	      int w = 0;
 	      int num[] = { 0, 0, 0, 0, 0 }; 
