@@ -1,4 +1,4 @@
-package java_1113;
+package java_1118;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -12,6 +12,9 @@ public class Word implements Comparable<Word>{
 			word_e=eng;
 			this.mean=mean;
 			
+		}
+		public boolean zeroCount() {
+			return count==0;
 		}
 		public void  upCount() {
 			count +=1;
@@ -40,7 +43,7 @@ public class Word implements Comparable<Word>{
 		}
 		@Override
 		public String toString() {
-			return "Word [word_e=" + word_e + ", mean=" + Arrays.toString(mean) + "]";
+			return "[영어 : " + word_e + ", 뜻 :" + Arrays.toString(mean) + "]";
 		}
 		@Override
 		public int hashCode() {//Set으로 담을 경우- hashcode 영어로만
