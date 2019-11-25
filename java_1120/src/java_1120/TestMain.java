@@ -12,6 +12,7 @@ public class TestMain {
 	ResultSet rs;
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		System.out.println("201810754 Á¶À±Á÷");
 		TestMain test =new TestMain();
 		test.connectDB();
 		//test.registerStudent();
