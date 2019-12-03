@@ -99,6 +99,7 @@ public class MyFrame extends JFrame implements ActionListener, ItemListener{
 		//현재 스크린 해상도 가져오기
 		Dimension screensize=kit.getScreenSize();
 		//멤버 변수 스크린 크기 값으로
+		
 		this.screenWidth=screensize.width;
 		this.screenHeight=screensize.height;
 		//컨테이너 가져오기
