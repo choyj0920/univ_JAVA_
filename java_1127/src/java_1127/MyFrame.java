@@ -9,6 +9,7 @@ public class MyFrame extends JFrame implements ActionListener{
 	int screenWidth,screenHeight;
 	JButton redBtn;
 	JButton blueBtn;
+	//btn 버튼
 	JButton Btn1;
 	JButton Btn2;
 	JButton Btn3;
@@ -19,6 +20,7 @@ public class MyFrame extends JFrame implements ActionListener{
 	int sizeset=1;
 	JPanel panel,panel2,cardPanel;
 	boolean toggle=false;
+	//패널 3개, +1
 	MyPanel card1,card2,card3,card4;
 	CardLayout card;
 	
@@ -67,6 +69,8 @@ public class MyFrame extends JFrame implements ActionListener{
 		card3=new MyPanel("png/마알.png");
 		card=new CardLayout();
 		cardPanel=new JPanel(card);
+		//카드 패널은 카드레이아웃이 아닌  패널 에넣음
+		//컴포는 컴포에
 		cardPanel.add(card1,"1");
 		cardPanel.add(card2,"2");
 		cardPanel.add(card3,"3");
@@ -115,6 +119,7 @@ public class MyFrame extends JFrame implements ActionListener{
 			panel2.setBackground(Color.BLUE);
 			
 		}
+		//btn 버튼 액션정의
 		if(e.getSource()==Btn1) {
 			card.show(cardPanel, "1");
 		}
@@ -136,7 +141,7 @@ public class MyFrame extends JFrame implements ActionListener{
 	
 		Image img;
 		MyPanel(String filename){
-			
+			//img 연결
 			img=kit.getImage(filename);
 			
 		}
