@@ -1,0 +1,4 @@
+cd C:\Users\choyj\eclipse-workspace\JAVA\java_HW_2_201810754\src
+
+javac java_HW_2_201810754/*.java
+java java_HW_2_201810754/TestMain
